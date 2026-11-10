@@ -1,4 +1,4 @@
-# Pennywise — AI-Assisted Debugging Workshop
+# Pennywise - AI-Assisted Debugging Workshop
 
 A small expense tracker built with **HTML, CSS, and vanilla JavaScript**. The interface is ready, but the JavaScript contains intentional defects. Your task is to reproduce each issue, investigate its root cause with an AI assistant, make a focused fix, and verify the result.
 
@@ -30,63 +30,63 @@ The app uses browser `localStorage`. To reset the sample data, clear this site's
 
 Each task gives the bug name and explains the symptom. Investigate the relevant function, ask AI to explain the root cause before suggesting a fix, and test the behavior afterwards.
 
-### Task 1 — Numeric Type / String Concatenation
+### Task 1 - Numeric Type / String Concatenation
 **Bug name:** Expense Total Concatenation
 
 **Explanation:** The Total Expenses card can display an incorrect total after an expense is added. Values may appear joined together rather than mathematically added. Inspect the type of the amount coming from the form and how `reduce()` calculates the total. JavaScript input values are strings by default.
 
 **Expected:** Total is the arithmetic sum of all expense amounts.
 
-### Task 2 — Array Index vs. Unique ID
+### Task 2 - Array Index vs. Unique ID
 **Bug name:** Wrong Transaction Gets Deleted
 
 **Explanation:** Clicking delete for one transaction may remove a different transaction, or the selected one may remain. The record's unique `id` and its position (index) in the array are not the same thing.
 
 **Expected:** Only the record whose ID matches the clicked button is removed.
 
-### Task 3 — Object Property Mismatch
+### Task 3 - Object Property Mismatch
 **Bug name:** Category Filter Property Mismatch
 
 **Explanation:** Choosing Food, Transport, or another category may show no matching records even though they exist. Compare the property names in the expense objects with the property accessed by the filter condition.
 
 **Expected:** The selected category shows only matching records; “All categories” shows all records that match other filters.
 
-### Task 4 — Case-Sensitive String Search
+### Task 4 - Case-Sensitive String Search
 **Bug name:** Search Case Mismatch
 
 **Explanation:** Searching `coffee` may fail to find a transaction titled `Coffee and sandwich`. Inspect how the search term and title are compared. Consider normalizing both strings before comparing.
 
 **Expected:** Search is case-insensitive and supports partial title matches.
 
-### Task 5 — Date Boundary / Missing Year
+### Task 5 - Date Boundary / Missing Year
 **Bug name:** Monthly Summary Includes the Wrong Year
 
 **Explanation:** The “This month” total may include transactions from the same month in a different year. Comparing only the month number does not uniquely identify a calendar month.
 
 **Expected:** Include only transactions from the current month and current year.
 
-### Task 6 — Persistence Key Mismatch
+### Task 6 - Persistence Key Mismatch
 **Bug name:** Saved Expenses Are Not Restored
 
 **Explanation:** Add an expense and refresh. The app may return to sample data instead of restoring the saved list. Compare the key passed to `localStorage.setItem()` with the key passed to `localStorage.getItem()`. Keys must match exactly.
 
 **Expected:** The same expense list is restored after refresh.
 
-### Task 7 — Missing Numeric Validation
+### Task 7 - Missing Numeric Validation
 **Bug name:** Invalid Expense Amount Accepted
 
 **Explanation:** The form may accept a negative amount or another invalid numeric value. Checking only whether the input is non-empty is not sufficient validation.
 
 **Expected:** Accept only finite amounts greater than zero. Show a useful error and do not add invalid records.
 
-### Task 8 — State and Persistence Out of Sync
+### Task 8 - State and Persistence Out of Sync
 **Bug name:** Clear All Does Not Persist
 
 **Explanation:** Clear All empties the visible list, but refreshing may bring old expenses back. Compare the Clear All handler with the add and delete flows. Updating in-memory state and updating persistent storage are separate operations.
 
 **Expected:** Once confirmed, the empty list remains empty after refresh.
 
-### Task 9 — Regression Testing
+### Task 9 - Regression Testing
 **Bug name:** Fix Introduces a New Defect
 
 **Explanation:** A fix may remove the original symptom but accidentally break another feature. This task is an integrated test pass rather than one seeded code defect.
